@@ -1,0 +1,149 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(93, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+}
+
+.container.x .cell:not(.x):not(.circle):hover::after,
+.container.x .cell:not(.x):not(.circle):hover::before,
+.container.circle .cell:not(.x):not(.circle):hover::after,
+.container.circle .cell:not(.x):not(.circle):hover::before {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 2px solid #ffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+    border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+    border-left: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+    border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+    border-right: none;
+}
+
+/* X */
+.cell.x::before,
+.cell.x::after,
+.container.x .cell:not(.x):not(.circle):hover::after,
+.container.x .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: 15%;
+    width: 90%;
+    background: black;
+    position: absolute;
+}
+
+.cell.x::before,
+.container.x .cell:not(.x):not(.circle):hover::before {
+    transform: rotate(45deg);
+}
+
+.cell.x::after,
+.container.x .cell:not(.x):not(.circle):hover::after {
+    transform: rotate(-45deg);
+
+}
+
+.cell.x, .cell.circle {
+    cursor: not-allowed;
+}
+
+/* O */
+.cell.circle::before,
+.cell.circle::after,
+.container.circle .cell:not(.x):not(.circle):hover::after,
+.container.circle .cell:not(.x):not(.circle):hover::before {
+    content: "";
+    height: 90%;
+    width: 90%;
+    background: black;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    flex-direction: column;
+}
+
+.winning-message-button {
+    font-size: 2.5em;
+    background-color: rgba(0, 212, 255, 1);
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    margin-top: 16px;
+    color: #ffff;
+}
+
+.winning-message-text {
+    color: #ffff;
+    font-size: 5em;
+}
+
+.show-winning-message {
+    display: flex;
+}
+
+.main-container {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box-title {
+    font-family: sans-serif;
+    font-size: 1.8em;
+}
+
+.box-title h1 {
+    background: linear-gradient(rgba(2, 0, 36, 1) 0%, rgba(93, 9, 121, 1) 60%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
